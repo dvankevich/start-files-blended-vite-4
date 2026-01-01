@@ -1,7 +1,10 @@
+// src/App.jsx
 import Container from './components/Container/Container';
 import Header from './components/Header/Header';
 import Section from './components/Section/Section';
-import Text from './components/Text/Text';
+import Form from './components/Form/Form';
+import TodoList from './components/TodoList/TodoList';
+// Filter in Step 3, EditForm in Step 4
 
 export const App = () => {
   return (
@@ -9,7 +12,8 @@ export const App = () => {
       <Header />
       <Section>
         <Container>
-          <Text textAlign="center">Create your first todo😉</Text>
+          <Form />
+          <TodoList />
         </Container>
       </Section>
     </>

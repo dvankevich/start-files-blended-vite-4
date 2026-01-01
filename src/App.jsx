@@ -5,15 +5,19 @@ import Section from './components/Section/Section';
 import Form from './components/Form/Form';
 import TodoList from './components/TodoList/TodoList';
 import Filter from './components/Filter/Filter';
-// Filter in Step 3, EditForm in Step 4
+import EditForm from './components/EditForm/EditForm';
+import { useSelector } from 'react-redux';
+import { selectCurrentTodo } from './redux/selectors';
 
 export const App = () => {
+  const currentTodo = useSelector(selectCurrentTodo);
+  const isEdit = !!currentTodo;
   return (
     <>
       <Header />
       <Section>
         <Container>
-          <Form />
+          {isEdit ? <EditForm /> : <Form />}
           <Filter />
           <TodoList />
         </Container>

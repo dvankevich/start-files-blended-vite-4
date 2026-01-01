@@ -3,14 +3,13 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
-  // We'll add currentTodo in Step 4
+  currentTodo: null,
 };
 
 const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    // Placeholder reducers - implement in later steps
     addTodo: (state, action) => {
       const newTodo = {
         id: nanoid(),
@@ -23,9 +22,23 @@ const todoSlice = createSlice({
       state.items = state.items.filter(todo => todo.id !== action.payload);
       console.log('state: ', state, 'action: ', action);
     },
-    // editTodo and setCurrentTodo to be added in Step 4
+    setCurrentTodo: (state, action) => {
+      state.currentTodo = action.payload;
+    },
+    editTodo: (state, action) => {
+      const { id, text } = action.payload;
+      const todo = state.items.find(todo => todo.id === id);
+      if (todo) {
+        todo.text = text;
+      }
+      state.currentTodo = null;
+    },
+    cancelEdit: state => {
+      state.currentTodo = null;
+    },
   },
 });
 
-export const { addTodo, deleteTodo } = todoSlice.actions;
+export const { addTodo, deleteTodo, setCurrentTodo, editTodo, cancelEdit } =
+  todoSlice.actions;
 export const todoReducer = todoSlice.reducer;

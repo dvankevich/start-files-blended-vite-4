@@ -256,7 +256,7 @@ export default Form;
 
 ```jsx
 // src/components/Todo/Todo.jsx
-import { Text } from 'components';
+import Text from '../Text/Text';
 import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
 import style from './Todo.module.css';
 import { useDispatch } from 'react-redux';

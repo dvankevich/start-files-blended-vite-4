@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { filterReducer } from './filterSlice';
 
 // Persist config for todos.items
 const todosPersistConfig = {
@@ -23,6 +24,7 @@ const todosPersistConfig = {
 export const store = configureStore({
   reducer: {
     todos: persistReducer(todosPersistConfig, todoReducer),
+    filter: filterReducer, // No persistence for filter
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
